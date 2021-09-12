@@ -29,7 +29,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(this@MainActivity, Game15ViewModel.FIELD_SIZE)
+            layoutManager = CustomGridLayoutManager(this@MainActivity, Game15ViewModel.FIELD_SIZE).apply {
+                isScrollEnabled = false
+            }
             adapter = this@MainActivity.adapter
 
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,

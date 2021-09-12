@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.andriod.game15.databinding.ItemCellBinding
 
@@ -23,18 +24,18 @@ class Game15Adapter : RecyclerView.Adapter<Game15Adapter.ViewHolder>() {
         private val binding = ItemCellBinding.bind(itemView)
 
         fun bind(value: Int) {
-            binding.textView.apply {
-                if (value != 0) {
+            if (value != 0) {
+                binding.cardView.isVisible = true
+                binding.textView.apply {
                     text = value.toString()
                     binding.textView.background =
                         if (value == adapterPosition + 1)
                             AppCompatResources.getDrawable(context, R.color.green)
                         else
                             AppCompatResources.getDrawable(context, R.color.red)
-                }else{
-                    text = ""
-                    background = AppCompatResources.getDrawable(context, R.color.white)
                 }
+            } else {
+                binding.cardView.isVisible = false
             }
         }
     }
