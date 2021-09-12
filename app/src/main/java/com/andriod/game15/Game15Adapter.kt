@@ -14,6 +14,7 @@ class Game15Adapter : RecyclerView.Adapter<Game15Adapter.ViewHolder>() {
             notifyDataSetChanged()
         }
 
+
     class ViewHolder(parent: ViewGroup) :
         RecyclerView.ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_cell,
@@ -30,6 +31,9 @@ class Game15Adapter : RecyclerView.Adapter<Game15Adapter.ViewHolder>() {
                             AppCompatResources.getDrawable(context, R.color.green)
                         else
                             AppCompatResources.getDrawable(context, R.color.red)
+                }else{
+                    text = ""
+                    background = AppCompatResources.getDrawable(context, R.color.white)
                 }
             }
         }
