@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.andriod.game15.databinding.ActivityMainBinding
@@ -29,9 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.recyclerView.apply {
-            layoutManager = CustomGridLayoutManager(this@MainActivity, Game15ViewModel.FIELD_SIZE).apply {
-                isScrollEnabled = false
-            }
+            layoutManager =
+                CustomGridLayoutManager(this@MainActivity, Game15ViewModel.FIELD_SIZE).apply {
+                    isScrollEnabled = false
+                }
             adapter = this@MainActivity.adapter
 
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,
