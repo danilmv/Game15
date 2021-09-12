@@ -3,5 +3,5 @@
 new app: Game15 with ItemTouchHelper-swipes and CustomGridLayoutManager (to disable scrolling)
 
 ### Preview
-<img src="printscreens/lesson5_1.png" width="32%">
-<img src="printscreens/lesson5.gif" width="32%">
+<img src="printscreens/lesson6_1.png" width="32%">
+<img src="printscreens/lesson6.gif" width="32%">
