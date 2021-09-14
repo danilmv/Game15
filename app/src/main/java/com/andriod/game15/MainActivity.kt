@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareField() {
-        viewModel.field.observe(this) {
+        viewModel.gameField.observe(this) {
             adapter.data = it
         }
 

@@ -5,32 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.random.Random
 
 class Game15ViewModel : ViewModel() {
 
-    private val _field = MutableLiveData<MutableList<Int>>()
-    val field: LiveData<MutableList<Int>> get() = _field
-    private val data = mutableListOf<Int>()
+    private val _gameField = MutableLiveData<MutableList<Int>>()
+    val gameField: LiveData<MutableList<Int>> get() = _gameField
+    private val gameFieldValues = mutableListOf<Int>()
 
     fun onCreate() {
-        data.clear()
-        data.addAll(generateData())
-        _field.postValue(data)
+        gameFieldValues.clear()
+        gameFieldValues.addAll(generateData())
+        _gameField.postValue(gameFieldValues)
     }
 
     private fun generateData(): MutableList<Int> {
         val result = mutableListOf<Int>()
-        val map = HashMap<Int, Boolean>()
-        for (i in 0 until NUM_ITEMS) {
-            do {
-                val value = Random.nextInt(NUM_ITEMS)
-                if (map[value] == true) continue
-                map[value] = true
-                result.add(value)
-                break
-            } while (true)
-        }
+        for (i in (0 until NUM_ITEMS).shuffled())
+            result.add(i)
 
         return result
     }
@@ -47,15 +38,15 @@ class Game15ViewModel : ViewModel() {
         val from = viewHolder.adapterPosition
         val to = from + move
         if (to < 0 || to >= NUM_ITEMS) return
-        if (field.value?.get(to) == 0) {
+        if (gameField.value?.get(to) == 0) {
             swap(from, to)
         } else return
     }
 
     private fun swap(from: Int, to: Int) {
-        data[to] = data[from]
-        data[from] = 0
-        _field.postValue(data)
+        gameFieldValues[to] = gameFieldValues[from]
+        gameFieldValues[from] = 0
+        _gameField.postValue(gameFieldValues)
     }
 
     companion object {

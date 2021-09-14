@@ -24,18 +24,13 @@ class Game15Adapter : RecyclerView.Adapter<Game15Adapter.ViewHolder>() {
 
         fun bind(value: Int) {
             if (value != 0) {
-                binding.cardView.isVisible = true
                 binding.textView.apply {
                     text = value.toString()
-                    binding.textView.background =
-                        if (value == adapterPosition + 1)
-                            AppCompatResources.getDrawable(context, R.color.green)
-                        else
-                            AppCompatResources.getDrawable(context, R.color.red)
+                    background = AppCompatResources.getDrawable(context,
+                        if (value == adapterPosition + 1) R.color.green else R.color.red)
                 }
-            } else {
-                binding.cardView.isVisible = false
             }
+            binding.cardView.isVisible = value != 0
         }
     }
 
